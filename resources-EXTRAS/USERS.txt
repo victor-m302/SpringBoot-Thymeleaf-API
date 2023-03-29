@@ -1,0 +1,12 @@
+------ADMIN------
+victor@gmail.com
+victor
+-----PACIENTE-----
+victorpaciente@gmail.com
+victor
+------MEDICO------
+victormedico@gmail.com
+victor
+------MEDICO 2------
+victormedico2@gmail.com
+victor

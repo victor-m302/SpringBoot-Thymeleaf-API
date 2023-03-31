@@ -16,5 +16,6 @@ public class DemoSecurityApplication {
 		// tem que criar qualquer usuário e a senha é de seis dígitos encriptada com BCrypt
 		//System.out.println(new BCryptPasswordEncoder().encode("123456"));
 		SpringApplication.run(DemoSecurityApplication.class, args);
+		System.out.println("aplicação start");
 	}
 }

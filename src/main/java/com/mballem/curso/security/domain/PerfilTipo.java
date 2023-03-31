@@ -9,13 +9,16 @@ public enum PerfilTipo {
 	private PerfilTipo(long cod, String desc) {
 		this.cod = cod;
 		this.desc = desc;
+		System.out.println("PerfilTipo 0001");
 	}
 
 	public long getCod() {
+		System.out.println("PerfilTipo 0002");
 		return cod;
 	}
 
 	public String getDesc() {
+		System.out.println("PerfilTipo 0003");
 		return desc;
 	}
 }

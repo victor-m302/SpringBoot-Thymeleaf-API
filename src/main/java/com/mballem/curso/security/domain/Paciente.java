@@ -29,34 +29,42 @@ public class Paciente extends AbstractEntity {
 	private Usuario usuario;
 
 	public String getNome() {
+		System.out.println("Paciente 0001");
 		return nome;
 	}
 
 	public void setNome(String nome) {
 		this.nome = nome;
+		System.out.println("Paciente 0002");
 	}
 
 	public LocalDate getDtNascimento() {
+		System.out.println("Paciente 0003");
 		return dtNascimento;
 	}
 
 	public void setDtNascimento(LocalDate dtNascimento) {
 		this.dtNascimento = dtNascimento;
+		System.out.println("Paciente 0004");
 	}
 
 	public List<Agendamento> getAgendamentos() {
+		System.out.println("Paciente 0005");
 		return agendamentos;
 	}
 
 	public void setAgendamentos(List<Agendamento> agendamentos) {
 		this.agendamentos = agendamentos;
+		System.out.println("Paciente 0006");
 	}
 
 	public Usuario getUsuario() {
+		System.out.println("Paciente 0007");
 		return usuario;
 	}
 
 	public void setUsuario(Usuario usuario) {
+		System.out.println("Paciente 0008");
 		this.usuario = usuario;
 	}
 

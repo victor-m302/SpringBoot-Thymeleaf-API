@@ -16,6 +16,7 @@ public class ExceptionController {
 		model.addObject("status", 404);
 		model.addObject("error", "Operação não pode ser realizada.");
 		model.addObject("message", ex.getMessage());
+		System.out.println("ExceptionController 0001");
 		return model;
 	}
 	
@@ -25,6 +26,7 @@ public class ExceptionController {
 		model.addObject("status", 403);
 		model.addObject("error", "Operação não pode ser realizada.");
 		model.addObject("message", ex.getMessage());
+		System.out.println("ExceptionController 0002");
 		return model;
 	}
 }

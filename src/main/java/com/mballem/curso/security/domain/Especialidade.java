@@ -24,26 +24,32 @@ public class Especialidade extends AbstractEntity {
 	private List<Medico> medicos;	
 
 	public String getTitulo() {
+		System.out.println("Especialidade 0001");
 		return titulo;
 	}
 
 	public void setTitulo(String titulo) {
 		this.titulo = titulo;
+		System.out.println("Especialidade 0002");
 	}	
 
 	public String getDescricao() {
+		System.out.println("Especialidade 0003");
 		return descricao;
 	}
 
 	public void setDescricao(String descricao) {
 		this.descricao = descricao;
+		System.out.println("Especialidade 0004");
 	}
 
 	public List<Medico> getMedicos() {
+		System.out.println("Especialidade 0005");
 		return medicos;
 	}
 
 	public void setMedico(List<Medico> medicos) {
 		this.medicos = medicos;
+		System.out.println("Especialidade 0006");
 	}
 }

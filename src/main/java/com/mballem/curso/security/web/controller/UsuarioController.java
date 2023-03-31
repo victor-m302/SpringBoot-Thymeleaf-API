@@ -38,21 +38,21 @@ public class UsuarioController {
     // abrir cadastro de usuarios (medico/admin/paciente)
     @GetMapping("/novo/cadastro/usuario")
     public String cadastroPorAdminParaAdminMedicoPaciente(Usuario usuario) {
-
+    	System.out.println("UsuarioController 0001");
         return "usuario/cadastro";
     }
     
     // abrir lista de usuarios
     @GetMapping("/lista")
     public String listarUsuarios() {
-
+    	System.out.println("UsuarioController 0002");
         return "usuario/lista";
     }  
 
     // listar usuarios na datatables
     @GetMapping("/datatables/server/usuarios")
     public ResponseEntity<?> listarUsuariosDatatables(HttpServletRequest request) {
-
+    	System.out.println("UsuarioController 0003");
         return ResponseEntity.ok(service.buscarTodos(request));
     } 
     
@@ -73,13 +73,14 @@ public class UsuarioController {
     			attr.addFlashAttribute("falha", "Cadastro não realizado, email já existente.");
 			}
     	}
+    	System.out.println("UsuarioController 0004");
     	return "redirect:/u/novo/cadastro/usuario";
     }
     
     // pre edicao de credenciais de usuarios
     @GetMapping("/editar/credenciais/usuario/{id}")
     public ModelAndView preEditarCredenciais(@PathVariable("id") Long id) {
-
+    	System.out.println("UsuarioController 0005");
         return new ModelAndView("usuario/cadastro", "usuario", service.buscarPorId(id));
     }    
     
@@ -104,6 +105,7 @@ public class UsuarioController {
     		model.addObject("status", 403);
     		model.addObject("error", "Área Restrita");
     		model.addObject("message", "Os dados de pacientes são restritos a ele.");
+    		System.out.println("UsuarioController 0006");
     		return model;
     	}
     	
@@ -112,7 +114,7 @@ public class UsuarioController {
     
     @GetMapping("/editar/senha")
     public String abrirEditarSenha() {
-    	
+    	System.out.println("UsuarioController 0007");
     	return "usuario/editar-senha";
     }
     
@@ -134,6 +136,7 @@ public class UsuarioController {
     		
     	service.alterarSenha(u, s1);
     	attr.addFlashAttribute("sucesso", "Senha alterada com sucesso.");
+    	System.out.println("UsuarioController 0008");
     	return "redirect:/u/editar/senha";
     }
     

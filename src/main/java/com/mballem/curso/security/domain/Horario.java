@@ -11,12 +11,15 @@ public class Horario extends AbstractEntity {
 	
 	@Column(name = "hora_minuto", unique = true, nullable = false)
 	private LocalTime horaMinuto;
-
+	
 	public LocalTime getHoraMinuto() {
+		System.out.println("Horário 0001");
 		return horaMinuto;
 	}
 
 	public void setHoraMinuto(LocalTime horaMinuto) {
+		System.out.println("Horário 0002");
 		this.horaMinuto = horaMinuto;
 	}
+
 }

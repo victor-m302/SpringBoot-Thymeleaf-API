@@ -29,13 +29,13 @@ public class AgendamentoService {
 
 	@Transactional(readOnly = true)
 	public List<Horario> buscarHorariosNaoAgendadosPorMedicoIdEData(Long id, LocalDate data) {
-		
+		System.out.println("AgendamentoService 0001");
 		return repository.findByMedicoIdAndDataNotHorarioAgendado(id, data);
 	}
 
 	@Transactional(readOnly = false)
 	public void salvar(Agendamento agendamento) {
-		
+		System.out.println("AgendamentoService 0002");
 		repository.save(agendamento);
 	}
 
@@ -44,6 +44,7 @@ public class AgendamentoService {
 		datatables.setRequest(request);
 		datatables.setColunas(DatatablesColunas.AGENDAMENTOS);
 		Page<HistoricoPaciente> page = repository.findHistoricoByPacienteEmail(email, datatables.getPageable());
+		System.out.println("AgendamentoService 0003");
 		return datatables.getResponse(page);
 	}
 
@@ -52,12 +53,13 @@ public class AgendamentoService {
 		datatables.setRequest(request);
 		datatables.setColunas(DatatablesColunas.AGENDAMENTOS);
 		Page<HistoricoPaciente> page = repository.findHistoricoByMedicoEmail(email, datatables.getPageable());
+		System.out.println("AgendamentoService 0004");
 		return datatables.getResponse(page);
 	}
 
 	@Transactional(readOnly = true)
 	public Agendamento buscarPorId(Long id) {
-		
+		System.out.println("AgendamentoService 0005");
 		return repository.findById(id).get();
 	}
 
@@ -68,12 +70,12 @@ public class AgendamentoService {
 		ag.setEspecialidade(agendamento.getEspecialidade());
 		ag.setHorario(agendamento.getHorario());
 		ag.setMedico(agendamento.getMedico());
-				
+		System.out.println("AgendamentoService 0006");
 	}
 
 	@Transactional(readOnly = true)
 	public Agendamento buscarPorIdEUsuario(Long id, String email) {
-		
+		System.out.println("AgendamentoService 0007");
 		return repository
 				.findByIdAndPacienteOrMedicoEmail(id, email)
 				.orElseThrow(() -> new AcessoNegadoException("Acesso negado ao usuário: " + email));
@@ -81,8 +83,8 @@ public class AgendamentoService {
 
 	@Transactional(readOnly = false)
 	public void remover(Long id) {
-		
 		repository.deleteById(id);
+		System.out.println("AgendamentoService 0008");
 	}
 
 }

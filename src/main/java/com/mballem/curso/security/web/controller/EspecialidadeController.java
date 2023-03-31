@@ -27,7 +27,7 @@ public class EspecialidadeController {
 
 	@GetMapping({"", "/"})
 	public String abrir(Especialidade especialidade) {
-
+		System.out.println("EspecialidadeController 0001");
 		return "especialidade/especialidade";
 	}
 	
@@ -35,18 +35,20 @@ public class EspecialidadeController {
 	public String salvar(Especialidade especialidade, RedirectAttributes attr) {
 		service.salvar(especialidade);
 		attr.addFlashAttribute("sucesso", "Operação realizada com sucesso!");
+		System.out.println("EspecialidadeController 0002");
 		return "redirect:/especialidades";
 	}
 	
 	@GetMapping("/datatables/server")
 	public ResponseEntity<?> getEspecialidades(HttpServletRequest request) {
-
+		System.out.println("EspecialidadeController 0003");
 		return ResponseEntity.ok(service.buscarEspecialidades(request));
 	}
 	
 	@GetMapping("/editar/{id}")
 	public String preEditar(@PathVariable("id") Long id, ModelMap model) {
 		model.addAttribute("especialidade", service.buscarPorId(id));
+		System.out.println("EspecialidadeController 0004");
 		return "especialidade/especialidade";
 	}
 	
@@ -54,18 +56,20 @@ public class EspecialidadeController {
 	public String abrir(@PathVariable("id") Long id, RedirectAttributes attr) {
 		service.remover(id);
 		attr.addFlashAttribute("sucesso", "Operação realizada com sucesso.");
+		System.out.println("EspecialidadeController 0005");
 		return "redirect:/especialidades";
 	}
 	
 	@GetMapping("/titulo")
 	public ResponseEntity<?> getEspecialidadesPorTermo(@RequestParam("termo") String termo) {
 		List<String> especialidades = service.buscarEspecialidadeByTermo(termo);
+		System.out.println("EspecialidadeController 0006");
 		return ResponseEntity.ok(especialidades);
 	}
 	
 	@GetMapping("/datatables/server/medico/{id}")
 	public ResponseEntity<?> getEspecialidadesPorMedico(@PathVariable("id") Long id, HttpServletRequest request) {
-		
+		System.out.println("EspecialidadeController 0007");
 		return ResponseEntity.ok(service.buscarEspecialidadesPorMedico(id, request)); 
 	}
 }

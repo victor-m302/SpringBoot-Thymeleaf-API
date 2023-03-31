@@ -47,61 +47,76 @@ public class Medico extends AbstractEntity {
 	
 	public Medico() {
 		super();
+		System.out.println("Medico 0001");
 	}
 
 	public Medico(Long id) {
 		super.setId(id);
+		System.out.println("Medico 0002");
 	}
 
 	public Medico(Usuario usuario) {
 		this.usuario = usuario;
+		System.out.println("Medico 0003");
 	}
 
 	public String getNome() {
+		System.out.println("Medico 0004");
 		return nome;
 	}
 
 	public void setNome(String nome) {
 		this.nome = nome;
+		System.out.println("Medico 0005");
 	}
 
 	public Integer getCrm() {
+		System.out.println("Medico 0006");
 		return crm;
 	}
 
 	public void setCrm(Integer crm) {
 		this.crm = crm;
+		System.out.println("Medico 0007");
 	}
 
 	public LocalDate getDtInscricao() {
+		System.out.println("Medico 0008");
 		return dtInscricao;
 	}
 
 	public void setDtInscricao(LocalDate dtInscricao) {
 		this.dtInscricao = dtInscricao;
+		System.out.println("Medico 0009");
 	}
 
 	public Set<Especialidade> getEspecialidades() {
+		System.out.println("Medico 0010");
 		return especialidades;
 	}
 
 	public void setEspecialidades(Set<Especialidade> especialidades) {
 		this.especialidades = especialidades;
+		System.out.println("Medico 0011");
 	}
 
 	public List<Agendamento> getAgendamentos() {
+		System.out.println("Medico 0012");
 		return agendamentos;
 	}
 
 	public void setAgendamentos(List<Agendamento> agendamentos) {
 		this.agendamentos = agendamentos;
+		System.out.println("Medico 0013");
 	}	
 
 	public Usuario getUsuario() {
+		System.out.println("Medico 0014");
 		return usuario;
 	}
 
 	public void setUsuario(Usuario usuario) {
 		this.usuario = usuario;
+		System.out.println("Medico 0015");
 	}
 }

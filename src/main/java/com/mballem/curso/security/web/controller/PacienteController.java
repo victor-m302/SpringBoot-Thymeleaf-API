@@ -31,6 +31,7 @@ public class PacienteController {
 			paciente.setUsuario(new Usuario(user.getUsername()));
 		}
 		model.addAttribute("paciente", paciente);
+		System.out.println("PacienteController 0001");
 		return "paciente/cadastro";
 	}
 	
@@ -45,6 +46,7 @@ public class PacienteController {
 		} else {
 			model.addAttribute("falha", "Sua senha não confere, tente novamente.");
 		}
+		System.out.println("PacienteController 0002");
 		return "paciente/cadastro";
 	}	
 	
@@ -58,6 +60,7 @@ public class PacienteController {
 		} else {
 			model.addAttribute("falha", "Sua senha não confere, tente novamente.");
 		}
+		System.out.println("PacienteController 0003");
 		return "paciente/cadastro";
 	}	
 		

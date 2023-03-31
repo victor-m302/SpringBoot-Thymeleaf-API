@@ -17,13 +17,13 @@ public class MedicoService {
 	
 	@Transactional(readOnly = true)
 	public Medico buscarPorUsuarioId(Long id) {
-		
+		System.out.println("MedicoService 0001");
 		return repository.findByUsuarioId(id).orElse(new Medico());
 	}
 
 	@Transactional(readOnly = false)
 	public void salvar(Medico medico) {
-		
+		System.out.println("MedicoService 0002");
 		repository.save(medico);
 	}
 
@@ -36,11 +36,12 @@ public class MedicoService {
 		if (!medico.getEspecialidades().isEmpty()) {
 			m2.getEspecialidades().addAll(medico.getEspecialidades());
 		}
+		System.out.println("MedicoService 0003");
 	}
 
 	@Transactional(readOnly = true)
 	public Medico buscarPorEmail(String email) {
-		
+		System.out.println("MedicoService 0004");
 		return repository.findByUsuarioEmail(email).orElse(new Medico());
 	}
 
@@ -48,17 +49,18 @@ public class MedicoService {
 	public void excluirEspecialidadePorMedico(Long idMed, Long idEsp) {
 		Medico medico = repository.findById(idMed).get();
 		medico.getEspecialidades().removeIf(e -> e.getId().equals(idEsp));
+		System.out.println("MedicoService 0005");
 	}
 
 	@Transactional(readOnly = true)
 	public List<Medico> buscarMedicosPorEspecialidade(String titulo) {
-		
+		System.out.println("MedicoService 0006");
 		return repository.findByMedicosPorEspecialidade(titulo);
 	}
 
 	@Transactional(readOnly = true)
 	public boolean existeEspecialidadeAgendada(Long idMed, Long idEsp) {
-		
+		System.out.println("MedicoService 0007");
 		return repository.hasEspecialidadeAgendada(idMed, idEsp).isPresent();
 	}
 }

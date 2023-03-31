@@ -12,6 +12,7 @@ public class HomeController {
 	// abrir pagina home
 	@GetMapping({"/", "/home"})
 	public String home() {
+		System.out.println("HomeController 0001");
 		return "home";
 	}		
 
@@ -19,7 +20,7 @@ public class HomeController {
 	// abrir pagina login
 	@GetMapping({"/login"})
 	public String login() {
-		
+		System.out.println("HomeController 0002");
 		return "login";
 	}	
 	
@@ -30,6 +31,7 @@ public class HomeController {
 		model.addAttribute("titulo", "Crendenciais inválidas!");
 		model.addAttribute("texto", "Login ou senha incorretos, tente novamente.");
 		model.addAttribute("subtexto", "Acesso permitido apenas para cadastros já ativados.");
+		System.out.println("HomeController 0003");
 		return "login";
 	}	
 	
@@ -39,6 +41,7 @@ public class HomeController {
 		model.addAttribute("status", resp.getStatus());
 		model.addAttribute("error", "Acesso Negado");
 		model.addAttribute("message", "Você não tem permissão para acesso a esta área ou ação.");
+		System.out.println("HomeController 0004");
 		return "error";
 	}	
 }

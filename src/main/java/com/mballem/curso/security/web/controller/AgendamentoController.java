@@ -42,7 +42,7 @@ public class AgendamentoController {
 	// abre a pagina de agendamento de consultas 
 	@GetMapping({"/agendar"})
 	public String agendarConsulta(Agendamento agendamento) {
-
+		System.out.println("AgendamentoController 0001");
 		return "agendamento/cadastro";		
 	}
 	
@@ -50,7 +50,7 @@ public class AgendamentoController {
 	@GetMapping("/horario/medico/{id}/data/{data}")
 	public ResponseEntity<?> getHorarios(@PathVariable("id") Long id,
 										 @PathVariable("data") @DateTimeFormat(iso = ISO.DATE) LocalDate data) {
-		
+		System.out.println("AgendamentoController 0002");
 		return ResponseEntity.ok(service.buscarHorariosNaoAgendadosPorMedicoIdEData(id, data));
 	}
 	
@@ -66,19 +66,21 @@ public class AgendamentoController {
 		agendamento.setPaciente(paciente);
 		service.salvar(agendamento);
 		attr.addFlashAttribute("sucesso", "Sua consulta foi agendada com sucesso.");
+		System.out.println("AgendamentoController 0003");
 		return "redirect:/agendamentos/agendar";		
 	}
 	
 	// abrir pagina de historico de agendamento do paciente
 	@GetMapping({"/historico/paciente", "/historico/consultas"})
 	public String historico() {
-
+		System.out.println("AgendamentoController 0004");
 		return "agendamento/historico-paciente";
 	}
 	
 	// localizar o historico de agendamentos por usuario logado
 	@GetMapping("/datatables/server/historico")
 	public ResponseEntity<?> historicoAgendamentosPorPaciente(HttpServletRequest request, @AuthenticationPrincipal User user) {
+		System.out.println("AgendamentoController 0005");
 		if (user.getAuthorities().contains(new SimpleGrantedAuthority(PerfilTipo.PACIENTE.getDesc()))) {
 			
 			return ResponseEntity.ok(service.buscarHistoricoPorPacienteEmail(user.getUsername(), request));
@@ -96,7 +98,7 @@ public class AgendamentoController {
 	@GetMapping("/editar/consulta/{id}") 
 	public String preEditarConsultaPaciente(@PathVariable("id") Long id, 
 										    ModelMap model, @AuthenticationPrincipal User user) {
-		
+		System.out.println("AgendamentoController 0006");
 		Agendamento agendamento = service.buscarPorIdEUsuario(id, user.getUsername());
 		
 		model.addAttribute("agendamento", agendamento);
@@ -110,7 +112,7 @@ public class AgendamentoController {
 				.buscarPorTitulos(new String[] {titulo})
 				.stream().findFirst().get();
 		agendamento.setEspecialidade(especialidade);
-		
+		System.out.println("AgendamentoController 0007");
 		service.editar(agendamento, user.getUsername());
 		attr.addFlashAttribute("sucesso", "Sua consulta froi alterada com sucesso.");
 		return "redirect:/agendamentos/agendar";
@@ -120,6 +122,7 @@ public class AgendamentoController {
 	public String excluirConsulta(@PathVariable("id") Long id, RedirectAttributes attr) {
 		service.remover(id);
 		attr.addFlashAttribute("sucesso", "Consulta excluída com sucesso.");
+		System.out.println("AgendamentoController 0008");
 		return "redirect:/agendamentos/historico/paciente";
 	}
 

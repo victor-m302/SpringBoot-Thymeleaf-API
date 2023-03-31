@@ -32,13 +32,14 @@ public class UsuarioService implements UserDetailsService {
 	
 	@Transactional(readOnly = true)
 	public Usuario buscarPorEmail(String email) {
-		
+		System.out.println("UsuarioService 0001");
 		return repository.findByEmail(email);
 	}
 
 	@Override @Transactional(readOnly = true)
 	public UserDetails loadUserByUsername(String username) throws UsernameNotFoundException {
 		Usuario usuario = buscarPorEmail(username);
+		System.out.println("UsuarioService 0002");
 		return new User(
 			usuario.getEmail(),
 			usuario.getSenha(),
@@ -51,6 +52,7 @@ public class UsuarioService implements UserDetailsService {
 		for (int i = 0; i < perfis.size(); i++) {
 			authorities[i] = perfis.get(i).getDesc();
 		}
+		System.out.println("UsuarioService 0003");
 		return authorities;
 	}
 	
@@ -61,6 +63,7 @@ public class UsuarioService implements UserDetailsService {
 		Page<Usuario> page = datatables.getSearch().isEmpty()
 				? repository.findAll(datatables.getPageable())
 				: repository.findByEmailOrPerfil(datatables.getSearch(), datatables.getPageable());
+		System.out.println("UsuarioService 0004");
 		return datatables.getResponse(page);
 	}
 
@@ -68,31 +71,32 @@ public class UsuarioService implements UserDetailsService {
 	public void salvarUsuario(Usuario usuario) {
 		String crypt = new BCryptPasswordEncoder().encode(usuario.getSenha());
 		usuario.setSenha(crypt);
-
-		repository.save(usuario); 	 	
+		repository.save(usuario);
+		System.out.println("UsuarioService 0005");
 	}
 
 	@Transactional(readOnly = true)
 	public Usuario buscarPorId(Long id) {
-		
+		System.out.println("UsuarioService 0006");
 		return repository.findById(id).get();
 	}
 
 	@Transactional(readOnly = true)
 	public Usuario buscarPorIdEPerfis(Long usuarioId, Long[] perfisId) {
-		
+		System.out.println("UsuarioService 0007");
 		return repository.findByIdAndPerfis(usuarioId, perfisId)
 				.orElseThrow(() -> new UsernameNotFoundException("Usuário inexistente!"));
 	}
 
 	public static boolean isSenhaCorreta(String senhaDigitada, String senhaArmazenada) {
-		
+		System.out.println("UsuarioService 0008");
 		return new BCryptPasswordEncoder().matches(senhaDigitada, senhaArmazenada);
 	}
 
 	@Transactional(readOnly = false)
 	public void alterarSenha(Usuario usuario, String senha) {
 		usuario.setSenha(new BCryptPasswordEncoder().encode(senha));
-		repository.save(usuario);		
+		repository.save(usuario);
+		System.out.println("UsuarioService 0009");
 	}
 }

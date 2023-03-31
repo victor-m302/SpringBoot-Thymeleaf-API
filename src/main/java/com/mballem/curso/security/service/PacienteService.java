@@ -15,13 +15,13 @@ public class PacienteService {
 	
 	@Transactional(readOnly = true)
 	public Paciente buscarPorUsuarioEmail(String email) {
-		
+		System.out.println("PacienteService 0001");
 		return repository.findByUsuarioEmail(email).orElse(new Paciente());
 	}
 
 	@Transactional(readOnly = false)
 	public void salvar(Paciente paciente) {
-		
+		System.out.println("PacienteService 0002");
 		repository.save(paciente);		
 	}
 
@@ -30,5 +30,6 @@ public class PacienteService {
 		Paciente p2 = repository.findById(paciente.getId()).get();
 		p2.setNome(paciente.getNome());
 		p2.setDtNascimento(paciente.getDtNascimento());		
+		System.out.println("PacienteService 0003");
 	}
 }

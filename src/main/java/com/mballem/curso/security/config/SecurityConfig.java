@@ -27,6 +27,7 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
 			// acessos públicos liberados
 			.antMatchers("/webjars/**", "/css/**", "/image/**", "/js/**").permitAll()
 			.antMatchers("/", "/home").permitAll()
+
 			
 			// acessos privados admin
 			.antMatchers("/u/editar/senha", "/u/confirmar/senha").hasAnyAuthority(PACIENTE, MEDICO)
@@ -58,12 +59,16 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
 			.and()
 				.exceptionHandling()
 				.accessDeniedPage("/acesso-negado");
+		
+		
+		System.out.println("SecurityConfig 0001");
 	}
 
 	@Override
 	protected void configure(AuthenticationManagerBuilder auth) throws Exception {
 		
 		auth.userDetailsService(service).passwordEncoder(new BCryptPasswordEncoder());
+		System.out.println("SecurityConfig 0002");
 	}
 	
 	

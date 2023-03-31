@@ -12,17 +12,21 @@ public class Perfil extends AbstractEntity {
 	
 	public Perfil() {
 		super();
+		System.out.println("Perfil 0001");
 	}
 
 	public Perfil(Long id) {
 		super.setId(id);
+		System.out.println("Perfil 0002");
 	}
 
 	public String getDesc() {
+		System.out.println("Perfil 0003");
 		return desc;
 	}
 
 	public void setDesc(String desc) {
 		this.desc = desc;
+		System.out.println("Perfil 0004");
 	}
 }

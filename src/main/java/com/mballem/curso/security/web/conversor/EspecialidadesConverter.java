@@ -23,6 +23,7 @@ public class EspecialidadesConverter implements Converter<String[], Set<Especial
 		if (titulos != null && titulos.length > 0) {
 			especialidades.addAll(service.buscarPorTitulos(titulos));			
 		}
+		System.out.println("PerfisConverter 0001");
 		return especialidades;
 	}
 }

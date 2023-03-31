@@ -33,6 +33,7 @@ public class MedicoController {
 			medico = service.buscarPorEmail(user.getUsername());
 			model.addAttribute("medico", medico);
 		}
+		System.out.println("MedicoController 0001");
 		return "medico/cadastro";
 	}
 	
@@ -46,6 +47,7 @@ public class MedicoController {
 		service.salvar(medico);
 		attr.addFlashAttribute("sucesso", "Operação realizada com sucesso.");
 		attr.addFlashAttribute("medico", medico);
+		System.out.println("MedicoController 0002");
 		return "redirect:/medicos/dados";
 	}
 	
@@ -55,6 +57,7 @@ public class MedicoController {
 		service.editar(medico);
 		attr.addFlashAttribute("sucesso", "Operação realizada com sucesso.");
 		attr.addFlashAttribute("medico", medico);
+		System.out.println("MedicoController 0003");
 		return "redirect:/medicos/dados";		
 	}
 	
@@ -69,12 +72,14 @@ public class MedicoController {
 			service.excluirEspecialidadePorMedico(idMed, idEsp);
 			attr.addFlashAttribute("sucesso", "Especialidade removida com sucesso.");
 		}
+		System.out.println("MedicoController 0004");
 		return "redirect:/medicos/dados";		
 	}
 	
 	// buscar medicos por especialidade via ajax
 	@GetMapping("/especialidade/titulo/{titulo}")
 	public ResponseEntity<?> getMedicosPorEspecialidade(@PathVariable("titulo") String titulo) {
+		System.out.println("MedicoController 0005");
 		return ResponseEntity.ok(service.buscarMedicosPorEspecialidade(titulo));
 	}
 	
